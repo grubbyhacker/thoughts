@@ -5,6 +5,7 @@ date: 2026-03-24
 author: Roger Fleig
 summary: "Code production cost is falling rapidly due to AI agents, but the downstream infrastructure — review, testing, integration, deployment — was designed for human-speed throughput. This is the narrow pipe."
 tags: ["AI", "developer infrastructure", "monorepo", "software engineering"]
+pdf: "narrowpipe.pdf"
 ShowToc: true
 TocOpen: true
 ---

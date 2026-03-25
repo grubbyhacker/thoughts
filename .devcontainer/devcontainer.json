@@ -9,7 +9,7 @@
     "ghcr.io/devcontainers/features/git:1": {}
   },
   "forwardPorts": [1313],
-  "postCreateCommand": "git submodule update --init --recursive",
+  "postCreateCommand": "git submodule update --init --recursive && sudo apt-get update && sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra fonts-dejavu",
   "customizations": {
     "vscode": {
       "extensions": ["budparr.language-hugo-vscode"]
