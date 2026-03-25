@@ -199,7 +199,7 @@ Any team operating in this space must be rigorous about measurement, and measure
 
 ### 3.1 The Activity Trap
 
-The most important measurement anti-pattern to name up front: organizations are already regressing to Taylorism by measuring AI prompt counts, lines of code generated, and PR volume. This is the **Activity Trap** — measuring low-value, easily-gamed outputs instead of meaningful outcomes.
+The most important measurement anti-pattern to name up front: organizations are already regressing to Taylorism by measuring AI prompt counts, lines of code generated, and PR volume. This is the **Activity Trap** — measuring low-value, easily-gamed activity instead of meaningful outcomes.
 
 Agents make this trap worse because they can generate enormous volumes of activity. An agent that opens twenty PRs in a day looks productive by activity metrics. If fifteen of those PRs require multiple review rounds, three introduce regressions, and two are reverted — the net outcome may be negative. Activity metrics for agents are not just uninformative; they are actively misleading because they create incentives to optimize for volume over value.
 
@@ -231,7 +231,7 @@ A 2025 randomized controlled trial by METR (Model Evaluation & Threat Research) 
 
 #### DORA: The Five Keys of Delivery (2026 Edition)
 
-The DORA metrics remain the gold standard for measuring delivery performance at the system level. The 2026 addition of **Rework Rate** as the fifth metric is particularly significant for agentic workflows.
+The DORA metrics remain the gold standard for measuring delivery performance at the system level. The addition of **Rework Rate** as the fifth metric is particularly significant for agentic workflows.
 
 | Metric | Definition | Agentic Implication |
 |---|---|---|
