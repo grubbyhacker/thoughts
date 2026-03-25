@@ -1,0 +1,19 @@
+baseURL = "http://fleig.us/"
+languageCode = "en-us"
+title = "Roger Fleig"
+theme = "PaperMod"
+
+[params]
+  author = "Roger Fleig"
+  description = "Long-form essays on software engineering and AI."
+  ShowToc = true
+  TocOpen = true
+  ShowBreadCrumbs = true
+  ShowReadingTime = true
+  ShowPostNavLinks = true
+
+[menu]
+  [[menu.main]]
+    name = "Writing"
+    url = "/writing/"
+    weight = 1
