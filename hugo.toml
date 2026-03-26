@@ -17,3 +17,13 @@ theme = "PaperMod"
     name = "Writing"
     url = "/writing/"
     weight = 1
+
+  [[menu.main]]
+    name = "Disclaimer"
+    url = "/disclaimer/"
+    weight = 2
+
+  [[menu.main]]
+    name = "License"
+    url = "/license/"
+    weight = 3
