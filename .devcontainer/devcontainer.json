@@ -10,6 +10,7 @@
   },
   "forwardPorts": [1313],
   "postCreateCommand": "git submodule update --init --recursive && sudo apt-get update && sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra fonts-dejavu",
+  "postStartCommand": "hugo server --bind 0.0.0.0",
   "customizations": {
     "vscode": {
       "extensions": ["budparr.language-hugo-vscode"]

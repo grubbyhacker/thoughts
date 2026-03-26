@@ -12,11 +12,18 @@ make pdf     # Generate PDFs for all essays (requires devcontainer with pandoc/t
 
 ## Content workflow
 
+**IMPORTANT for Claude Code**: Always create a feature branch off `main` before making any
+changes. Never commit directly to `main` — direct pushes are blocked by branch protection.
+
 Essays live in `content/writing/<slug>/index.md`. To publish:
-1. Create the essay file with frontmatter (see below)
-2. Run `make pdf` inside the devcontainer — outputs to `static/writing/<slug>/<slug>.pdf`
-3. Commit both the markdown and generated PDF
-4. Push to `main` — GitHub Actions deploys automatically
+1. Create a feature branch: `git checkout -b feat/<slug>`
+2. Create the essay file with frontmatter (see below)
+3. Run `make pdf` inside the devcontainer — outputs to `static/writing/<slug>/<slug>.pdf`
+4. Commit both the markdown and generated PDF
+5. Open a PR against `main` — CI build check must pass before merging
+6. To preview: open a Codespace from the PR on GitHub.com → hugo server auto-starts →
+   click the forwarded port 1313 link to browse the PR's version of the site
+7. Merge the PR → GitHub Actions deploys automatically
 
 ## File structure
 
