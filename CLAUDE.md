@@ -10,20 +10,31 @@ make serve   # Hugo dev server (requires Hugo extended)
 make pdf     # Generate PDFs for all essays (requires devcontainer with pandoc/texlive)
 ```
 
-## Content workflow
+## Agentic directives for Claude Code
 
-**IMPORTANT for Claude Code**: Always create a feature branch off `main` before making any
-changes. Never commit directly to `main` — direct pushes are blocked by branch protection.
+**IMPORTANT**: Claude Code must follow these rules autonomously — do not wait to be asked:
+
+- **Always work on a feature branch.** Never commit or push to `main` directly. Branch protection will reject it anyway — don't waste the attempt.
+- **Own the full Git workflow.** Create the branch, stage files, commit, push, and open the PR without prompting the user.
+- **Run `make pdf` via the devcontainer CLI** (not bare shell — pandoc/texlive only exist inside the container):
+  ```bash
+  devcontainer up --workspace-folder /home/roger/src/thoughts
+  devcontainer exec --workspace-folder /home/roger/src/thoughts make pdf
+  ```
+- **Delete branches after merge.** Once a PR is merged, delete both the remote branch (GitHub may do this automatically) and the local branch.
+
+## Content workflow
 
 Essays live in `content/writing/<slug>/index.md`. To publish:
 1. Create a feature branch: `git checkout -b feat/<slug>`
 2. Create the essay file with frontmatter (see below)
-3. Run `make pdf` inside the devcontainer — outputs to `static/writing/<slug>/<slug>.pdf`
+3. Run `make pdf` via the devcontainer CLI (see above)
 4. Commit both the markdown and generated PDF
-5. Open a PR against `main` — CI build check must pass before merging
+5. Push and open a PR against `main` — CI build check must pass before merging
 6. To preview: open a Codespace from the PR on GitHub.com → hugo server auto-starts →
    click the forwarded port 1313 link to browse the PR's version of the site
 7. Merge the PR → GitHub Actions deploys automatically
+8. Delete the feature branch (local and remote)
 
 ## File structure
 
