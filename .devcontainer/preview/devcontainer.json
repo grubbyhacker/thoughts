@@ -1,5 +1,5 @@
 {
-  "name": "Hugo Site",
+  "name": "Hugo Site (Preview)",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
     "ghcr.io/devcontainers/features/hugo:1": {
@@ -9,7 +9,7 @@
     "ghcr.io/devcontainers/features/git:1": {}
   },
   "forwardPorts": [1313],
-  "postCreateCommand": "git submodule update --init --recursive && sudo apt-get update && sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra fonts-dejavu",
+  "postCreateCommand": "git submodule update --init --recursive",
   "postStartCommand": "if [ -n \"$CODESPACE_NAME\" ]; then hugo server --bind 0.0.0.0 --baseURL \"https://${CODESPACE_NAME}-1313.app.github.dev\" --appendPort=false; else hugo server --bind 0.0.0.0; fi",
   "customizations": {
     "vscode": {
