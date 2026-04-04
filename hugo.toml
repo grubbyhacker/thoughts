@@ -12,7 +12,24 @@ theme = "PaperMod"
   ShowReadingTime = true
   ShowPostNavLinks = true
 
+[[params.socialIcons]]
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/rogerfleig/"
+
+[[params.socialIcons]]
+  name = "substack"
+  url = "https://substack.com/@rogerfleig"
+
+[[params.socialIcons]]
+  name = "github"
+  url = "https://github.com/grubbyhacker"
+
 [menu]
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 0
+
   [[menu.main]]
     name = "Writing"
     url = "/writing/"
