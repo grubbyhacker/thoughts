@@ -8,6 +8,7 @@ pdf:
 			--from markdown \
 			--to pdf \
 			--pdf-engine=xelatex \
+			--resource-path="$$dir:." \
 			--variable mainfont="DejaVu Serif" \
 			-o static/writing/$$name/$$name.pdf; \
 		echo "Generated static/writing/$$name/$$name.pdf"; \
