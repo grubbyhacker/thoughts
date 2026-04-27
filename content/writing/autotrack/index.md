@@ -18,7 +18,7 @@ April 2026
 
 ---
 
-## §1 — Opener
+## 1 — Opener
 
 I am about ten minutes into an hour-long unattended migration, and I am bored.
 
@@ -30,7 +30,7 @@ I spent the week using AI coding agents to build a system in which AI agents wou
 
 ---
 
-## §2 — Autotrack
+## 2 — Autotrack
 
 Autotrack is a small racing simulator I built on Roblox. It's not a game you play; it's a system you watch. The track is a big rectangular loop. Four corners are fixed. Between the corners are six straight sectors where obstacles can be placed. The obstacles come in three flavors: a ramp jump, a chicane (a quick S-curve), and a hill (which is called a `crestdip` in the codebase). Each sector can also have small speed pads at its entry and exit, to nudge a test car called the verifier faster or slower as it enters and leaves.
 
@@ -46,7 +46,7 @@ I built it because I wanted to keep my hands close to agentic systems at a scale
 
 ---
 
-## §3 — The two-day hill
+## 3 — The two-day hill
 
 Most of Autotrack worked the way I expected. The four corner sectors stayed where I put them. The verifier drove around the loop. When I added an obstacle to a straight, the car hit it more or less the way I'd guessed it would. The simulation agents — running on a heuristic implementation at this stage of the project, not yet wired to real models — proposed geometries, ran tests, and either committed or repaired.
 
@@ -70,7 +70,7 @@ This was the human-as-eyes pattern that defined the early work. It only changed 
 
 ---
 
-## §4 — Observability as the ceiling
+## 4 — Observability as the ceiling
 
 Earlier in the project, before any of the structured-result plumbing existed, my coding agent's relationship to the test results was crude. I'd ask it to run a test suite. It would invoke the tests through the Roblox MCP server, which would execute them inside Studio and dump output to Studio's console. The MCP server would then return a slice of that output back to the coding agent — bounded by some line limit I never measured precisely — and the coding agent would try to reason about what had failed from the fragment.
 
@@ -102,7 +102,7 @@ The screenshotter is fragile, undocumented, and depends on PowerShell. Tuning mo
 
 ---
 
-## §5 — Tool-use efficiency and the test bridge
+## 5 — Tool-use efficiency and the test bridge
 
 I built Autotrack during a stretch when context costs felt sharp on both axes — the tokens consumed per call were rising, and the working window of any given session degraded faster than it had before. The two effects compounded. Every test the coding agent ran through Roblox's MCP server cost it some thousands of tokens. The request payload, the structured response, the error traces, all of it billed to the agent's context. Across the dozens of test runs a coding agent will do in a tight fix-and-retest loop, you might do thirty or fifty of these in an hour. By the end of that hour the agent was operating with substantially less of its working memory than it started with, and the work it was now doing — the harder work, the work that needed the early context to be solid — was happening on the thinnest version of the agent's attention.
 
@@ -124,7 +124,7 @@ The test bridge is the small artifact I'm proudest of in this project. Not becau
 
 ---
 
-## §6 — Structured intent and durable memory
+## 6 — Structured intent and durable memory
 
 By the time Autotrack had three cooperating simulation agents — orchestrator, proposer, repair — I had a problem that wasn't really about agents.
 
@@ -144,7 +144,7 @@ The general lesson: *agents need durable, structured memory in proportion to the
 
 ---
 
-## §7 — When agents have judgment
+## 7 — When agents have judgment
 
 For most of the week I was, in fact, frequently frustrated by my coding agents. The frustration was almost always about the same thing.
 
@@ -174,7 +174,7 @@ The strict-typing campaign is what produced it. The strict-typing campaign is al
 
 ---
 
-## §8 — Out of the loop
+## 8 — Out of the loop
 
 Late in the week I started a side project: a hygiene push to migrate the Luau codebase from `--!nonstrict` to `--!strict`. Modern type-checking, file by file. The codebase had 107 Luau files. I wanted to flip all of them.
 
@@ -226,7 +226,7 @@ This isn't the first time this kind of shift has happened to me. Around 2011, in
 
 ---
 
-## §10 — Closing
+## 10 — Closing
 
 The simulation agents I built and the coding agents that built them needed similar primitives. Observability into the systems they were modifying. Structured intent to carry their goals across role boundaries and session boundaries. Bounded retries with reversibility built in. Most of this is just good engineering — the kind that's been understood for decades, made suddenly more visible because the costs of abandoning it are now legible in a way they weren't when only humans were paying them.
 
@@ -260,7 +260,7 @@ The thread running through these observations is the same. The platform has impo
 
 A short coda. Every project this size leaves the practitioner with a list of things they'd hand forward to whoever picks up this kind of work next. Mine has three items.
 
-*Set up hygiene tooling on day one.* I deliberately skipped the linter, formatter, and typechecker setup in the early days because I wanted to streamline the friction of getting the first version of Autotrack running. The cost was that I accumulated a substantial pile of technical debt across one intense week — debt that became the strict-typing migration described in §8, which became the campaign-mode discovery the article climbs toward. The pile of debt turned out to be the project's most useful study object, which means I'm not entirely sorry I built it. But on a project where the goal isn't *to learn what bounded-autonomy migration feels like*, hygiene tooling on the first day is the move. The marginal friction is small. The cumulative cost of skipping it scales worse than you expect.
+*Set up hygiene tooling on day one.* I deliberately skipped the linter, formatter, and typechecker setup in the early days because I wanted to streamline the friction of getting the first version of Autotrack running. The cost was that I accumulated a substantial pile of technical debt across one intense week — debt that became the strict-typing migration described in 8, which became the campaign-mode discovery the article climbs toward. The pile of debt turned out to be the project's most useful study object, which means I'm not entirely sorry I built it. But on a project where the goal isn't *to learn what bounded-autonomy migration feels like*, hygiene tooling on the first day is the move. The marginal friction is small. The cumulative cost of skipping it scales worse than you expect.
 
 *Take the physics substrate seriously from the start.* Several of my hardest debugging moments came from treating the underlying physics as a backdrop rather than as the source of truth. The two-day hill is one example. Another I discovered late: the verifier had been modeled with the mass and damping characteristics of lightweight plastic rather than a 1200kg rally car, which had been quietly shaping every stability problem I'd been treating as geometric. Sector-entry normalization should have been a day-one design decision. If I were starting over, I'd build the physics-state instrumentation in the first phase rather than the fourth, and I'd validate the verifier's mass and damping parameters against a real reference vehicle before letting any obstacle work begin.
 
