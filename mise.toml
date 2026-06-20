@@ -1,0 +1,19 @@
+[tools]
+hugo = "0.163.3"
+
+[tasks.serve]
+description = "Run the Hugo development server"
+run = "hugo server"
+
+[tasks.build]
+description = "Build the Hugo site"
+run = "hugo --minify --noBuildLock"
+
+[tasks.validate]
+description = "Build the site and verify article Markdown alternates"
+run = [
+  "hugo --minify --noBuildLock",
+  "test -f public/writing/autotrack/index.md",
+  "cmp content/writing/autotrack/index.md public/writing/autotrack/index.md",
+  "grep -Fq '<link rel=alternate type=text/markdown href=/writing/autotrack/index.md>' public/writing/autotrack/index.html",
+]

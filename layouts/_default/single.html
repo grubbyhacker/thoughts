@@ -48,6 +48,13 @@
   {{- end }}
 
   <footer class="post-footer">
+    {{- if and .IsPage (eq .Section "writing") }}
+    {{- with .OutputFormats.Get "markdown" }}
+    <div class="post-markdown-link">
+      <a href="{{ .RelPermalink }}">Agent-readable Markdown</a>
+    </div>
+    {{- end }}
+    {{- end }}
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
       {{- range ($.GetTerms $tags) }}

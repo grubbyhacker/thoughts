@@ -7,8 +7,14 @@ Live at: https://fleig.us
 ## Local development
 
 ```bash
+# Install pinned local tools (Hugo extended)
+mise install
+
 # Serve locally (requires Hugo extended)
-make serve
+mise run serve
+
+# Build and validate generated article Markdown alternates
+mise run validate
 
 # Generate PDFs (requires devcontainer with pandoc/texlive)
 make pdf

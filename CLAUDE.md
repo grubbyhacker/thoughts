@@ -6,8 +6,11 @@ Live at https://fleig.us. Theme: PaperMod. Deployed via GitHub Actions to GitHub
 ## Key commands
 
 ```bash
-make serve   # Hugo dev server (requires Hugo extended)
-make pdf     # Generate PDFs for all essays (requires devcontainer with pandoc/texlive)
+mise install       # Install pinned local tools, including Hugo extended
+mise run serve     # Hugo dev server
+mise run build     # Build the site
+mise run validate  # Build and verify generated article Markdown alternates
+make pdf           # Generate PDFs for all essays (requires devcontainer with pandoc/texlive)
 ```
 
 ## Agentic directives for Claude Code

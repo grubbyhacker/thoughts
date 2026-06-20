@@ -24,8 +24,14 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: latest
+          hugo-version: 0.163.3
           extended: true
 
       - name: Build
         run: hugo --minify --noBuildLock
+
+      - name: Verify Markdown alternate
+        run: |
+          test -f public/writing/autotrack/index.md
+          cmp content/writing/autotrack/index.md public/writing/autotrack/index.md
+          grep -Fq '<link rel=alternate type=text/markdown href=/writing/autotrack/index.md>' public/writing/autotrack/index.html

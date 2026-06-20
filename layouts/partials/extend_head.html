@@ -1,0 +1,5 @@
+{{- if and .IsPage (eq .Section "writing") -}}
+{{- with .OutputFormats.Get "markdown" }}
+<link rel="alternate" type="text/markdown" href="{{ .RelPermalink }}">
+{{- end }}
+{{- end }}
