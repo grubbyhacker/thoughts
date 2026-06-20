@@ -3,6 +3,15 @@ languageCode = "en-us"
 title = "Roger Fleig"
 theme = "PaperMod"
 
+[outputFormats]
+  [outputFormats.markdown]
+    notAlternative = true
+
+[[cascade]]
+  outputs = ["html", "markdown"]
+  [cascade.target]
+    path = "/writing/**"
+
 [params]
   author = "Roger Fleig"
   description = "Long-form essays on software engineering and AI."
