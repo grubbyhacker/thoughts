@@ -1,7 +1,7 @@
 ---
 title: "If You Give an Agent a Token..."
 subtitle: "A field report on brokers, memory, agent fleets, and the line between code and agency"
-date: 2026-06-24
+date: 2026-06-23
 author: Roger Fleig
 description: "A field report from building brokered identities, private memory systems, and a coding-agent fleet."
 summary: "A field report from building brokered identities, private memory systems, and a coding-agent fleet."
