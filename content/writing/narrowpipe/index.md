@@ -1,6 +1,6 @@
 ---
 title: "The Narrow Pipe"
-subtitle: "A Position Paper on the Emerging Challenges in Developer Infrastructure for Agent-Scale Software Engineering"
+subtitle: "A Position Paper on the Emerging Challenges in Developer Infrastructure for Agent-Scale Software Engineering, with Specific Considerations for Mature Monorepo Environments"
 date: 2026-03-24
 author: Roger Fleig
 summary: "Code production cost is falling rapidly due to AI agents, but the downstream infrastructure — review, testing, integration, deployment — was designed for human-speed throughput. This is the narrow pipe."
@@ -8,17 +8,6 @@ tags: ["AI", "developer infrastructure", "monorepo", "software engineering"]
 pdf: "narrowpipe.pdf"
 ShowToc: true
 TocOpen: true
----
-# THE NARROW PIPE
-
-**A Position Paper on the Emerging Challenges in Developer Infrastructure for Agent-Scale Software Engineering**
-
-*With Specific Considerations for Mature Monorepo Environments*
-
-March 2026
-
-**Author:** Roger Fleig
-
 ---
 
 ## Executive Summary
@@ -484,4 +473,3 @@ This case study is an illustration of a class of failures, not proof that all LL
 **Author's note:** AI tools were used extensively at every stage of this paper, including synthesis, structural editing, prose revision, and critique. I treated them as accelerants and adversarial readers rather than authorities. I am the sole author of this paper and am responsible for its claims, evidence, interpretations, and conclusions.
 
 ---
-

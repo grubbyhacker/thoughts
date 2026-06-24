@@ -10,13 +10,6 @@ pdf: "autotrack.pdf"
 ShowToc: true
 TocOpen: true
 ---
-# Agents Building Agents
-
-April 2026
-
-**Author:** Roger Fleig
-
----
 
 ## 1 — Opener
 
