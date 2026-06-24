@@ -51,7 +51,10 @@
     {{- if and .IsPage (eq .Section "writing") }}
     {{- with .OutputFormats.Get "markdown" }}
     <div class="post-markdown-link">
-      <a href="{{ .RelPermalink }}">Agent-readable Markdown</a>
+      <a href="{{ .RelPermalink }}" title="Agent-readable Markdown">
+        {{- partial "markdown_icon.html" -}}
+        <span>Agent-readable Markdown</span>
+      </a>
     </div>
     {{- end }}
     {{- end }}

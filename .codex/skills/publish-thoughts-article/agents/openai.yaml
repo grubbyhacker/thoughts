@@ -1,0 +1,4 @@
+interface:
+  display_name: "Publish Thoughts Article"
+  short_description: "Turn raw Markdown into a Thoughts essay"
+  default_prompt: "Use $publish-thoughts-article to publish this raw Markdown essay in the thoughts.fleig.us repo."

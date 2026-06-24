@@ -1,4 +1,29 @@
 .post-markdown-link {
-  font-size: 0.875rem;
+  display: flex;
   margin-bottom: 1rem;
+}
+
+.post-markdown-link a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--code-bg);
+  color: var(--secondary);
+  font-size: 0.875rem;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.post-markdown-link a:hover {
+  background: var(--border);
+  color: var(--primary);
+}
+
+.post-markdown-link svg {
+  width: 28px;
+  height: 18px;
+  flex: 0 0 auto;
 }

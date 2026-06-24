@@ -14,6 +14,10 @@ TocOpen: true
 
 *A field report on brokers, memory, agent fleets, and the line between code and agency*
 
+June 2026
+
+**Author:** Roger Fleig
+
 ---
 
 ## Earned Experience
