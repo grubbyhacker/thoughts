@@ -3,6 +3,14 @@ languageCode = "en-us"
 title = "Roger Fleig"
 theme = "PaperMod"
 
+[module]
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = ".generated/static"
+    target = "static"
+
 [outputFormats]
   [outputFormats.markdown]
     notAlternative = true

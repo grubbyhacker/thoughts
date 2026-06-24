@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+make pdf
 hugo --minify --noBuildLock
 
 for article in content/writing/*/index.md; do
@@ -25,7 +26,7 @@ for article in content/writing/*/index.md; do
   )"
 
   if [[ -n "$pdf" ]]; then
-    test -f "static/writing/$slug/$pdf"
+    test -f ".generated/static/writing/$slug/$pdf"
     test -f "$public_dir/$pdf"
     grep -Fq "href=/writing/$slug/$pdf" "$public_dir/index.html"
   fi

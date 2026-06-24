@@ -10,16 +10,6 @@ ShowToc: true
 TocOpen: true
 ---
 
-# If You Give an Agent a Token...
-
-*A field report on brokers, memory, agent fleets, and the line between code and agency*
-
-June 2026
-
-**Author:** Roger Fleig
-
----
-
 ## Earned Experience
 I do not really learn a technology until I have to use it on a real problem.
 

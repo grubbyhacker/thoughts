@@ -24,5 +24,5 @@ mise run pdf
 
 1. Create `content/writing/<slug>/index.md`
 2. Run `mise run pdf`
-3. Commit markdown + generated PDF
+3. Commit markdown and source assets only; PDFs are generated under `.generated/` by CI/deploy
 4. Push to main — GitHub Actions deploys automatically

@@ -36,7 +36,7 @@ Essays live in `content/writing/<slug>/index.md`. To publish:
 1. Create a feature branch: `git checkout -b feat/<slug>`
 2. Create the essay file with frontmatter (see below)
 3. Run `mise run pdf` (see above)
-4. Commit both the markdown and generated PDF
+4. Commit the markdown and source assets only; generated PDFs are written under `.generated/` and produced by CI/deploy
 5. Push and open a PR against `main` — CI build check must pass before merging
 6. To preview: open a Codespace from the PR on GitHub.com → hugo server auto-starts →
    click the forwarded port 1313 link to browse the PR's version of the site
@@ -55,7 +55,9 @@ layouts/
     single.html     # Custom single-page template (extends PaperMod)
   index.html        # Home page template
 static/
-  writing/          # Generated PDFs
+  CNAME             # Static source files
+.generated/
+  static/writing/   # Generated PDFs mounted into Hugo's static output
 hugo.toml           # Site config, nav menu, PaperMod params
 Makefile            # pdf and serve targets
 ```
@@ -95,4 +97,4 @@ ShowToc: false
 
 ## PDF generation
 
-The `make pdf` target strips the YAML frontmatter and pipes the markdown body through pandoc with xelatex. `mise install` provides pandoc and TinyTeX locally; the devcontainer also installs pandoc and texlive-xetex.
+The `make pdf` target runs `scripts/generate-pdfs.sh`, which uses article frontmatter as the source of truth for the PDF title block and pipes a temporary Pandoc document through xelatex. Do not duplicate title, subtitle, date, or author in the Markdown body for PDF output. Generated PDFs are written to `.generated/static/writing/`, mounted into Hugo's static output, and must not be committed or placed under source directories. `mise install` provides pandoc and TinyTeX locally; CI/deploy and the devcontainer install pandoc and texlive-xetex.

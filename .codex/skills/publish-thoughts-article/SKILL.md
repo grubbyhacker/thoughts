@@ -30,21 +30,9 @@ TocOpen: true
 
 Prefer the current local date unless the draft or user gives a publication date. Do not silently use a future date.
 
-Use this body opening so the PDF has visible attribution after frontmatter is stripped:
+Do not repeat the title, subtitle, date, or author as a manual opening block in the Markdown body. Frontmatter is the source of truth for both the Hugo article header and the generated PDF title block.
 
-```markdown
-# Essay Title
-
-*Optional subtitle*
-
-Month YYYY
-
-**Author:** Roger Fleig
-
----
-```
-
-If the raw Markdown already has a title/subtitle/date/author block, adapt it to this shape instead of duplicating it. Keep the author/date visible in the body even though they also exist in frontmatter.
+If the raw Markdown already has a title/subtitle/date/author block, move those values into frontmatter and remove the duplicate body block.
 
 ## Conversion Workflow
 
@@ -52,7 +40,7 @@ If the raw Markdown already has a title/subtitle/date/author block, adapt it to 
 2. Create or update `content/writing/<slug>/index.md`.
 3. Add any article images beside `index.md` and reference them with relative paths.
 4. Run `mise install` if required tools are missing.
-5. Run `mise run pdf` and commit `static/writing/<slug>/<slug>.pdf` with the article.
+5. Run `mise run pdf` to verify PDF generation locally; do not commit generated PDFs.
 6. Run `mise run validate`.
 7. For preview requests, run `mise run serve` or `hugo server` and verify:
    - The article page renders.
@@ -65,8 +53,7 @@ If the raw Markdown already has a title/subtitle/date/author block, adapt it to 
 Before finishing, check:
 
 - Frontmatter has `title`, `date`, `author`, `description` or `summary`, `pdf`, `ShowToc`, and `TocOpen`.
-- The body has a visible title, date, and `**Author:** Roger Fleig` for PDF output.
-- The generated PDF exists under `static/writing/<slug>/`.
+- The body does not repeat the frontmatter title, subtitle, date, or author.
+- The generated PDF exists under `.generated/static/writing/<slug>/` locally after `mise run pdf`.
 - `mise run validate` passes.
-- Existing unrelated article PDFs were not changed by a no-op regeneration; restore them if their source article did not change.
-- The PR or commit includes both the article Markdown and generated PDF.
+- Generated PDFs are not included in the PR or commit and are not written under source directories.

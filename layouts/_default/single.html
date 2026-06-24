@@ -14,9 +14,9 @@
       </span>
       {{- end }}
     </h1>
-    {{- if .Description }}
+    {{- with .Params.subtitle }}
     <div class="post-description">
-      {{ .Description }}
+      {{ . }}
     </div>
     {{- end }}
     {{- if not (.Param "hideMeta") }}
