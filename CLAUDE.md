@@ -6,11 +6,11 @@ Live at https://fleig.us. Theme: PaperMod. Deployed via GitHub Actions to GitHub
 ## Key commands
 
 ```bash
-mise install       # Install pinned local tools, including Hugo extended
+mise install       # Install pinned local tools, including Hugo, pandoc, TinyTeX, and devcontainer CLI
 mise run serve     # Hugo dev server
 mise run build     # Build the site
-mise run validate  # Build and verify generated article Markdown alternates
-make pdf           # Generate PDFs for all essays (requires devcontainer with pandoc/texlive)
+mise run validate  # Build and verify generated article assets
+mise run pdf       # Generate PDFs for all essays
 ```
 
 ## Agentic directives for Claude Code
@@ -19,8 +19,12 @@ make pdf           # Generate PDFs for all essays (requires devcontainer with pa
 
 - **Always work on a feature branch.** Never commit or push to `main` directly. Branch protection will reject it anyway — don't waste the attempt.
 - **Own the full Git workflow.** Create the branch, stage files, commit, push, and open the PR without prompting the user.
-- **Run `make pdf` via the devcontainer CLI** (not bare shell — pandoc/texlive only exist inside the container):
+- **For raw Markdown to article work, use the repo-local skill at `.codex/skills/publish-thoughts-article/SKILL.md`.**
+- **Run `mise run pdf` after `mise install`**. The repository pins pandoc, TinyTeX, and the devcontainer CLI in `mise.toml`; the devcontainer flow remains supported when you want the containerized environment:
   ```bash
+  mise install
+  mise run pdf
+
   devcontainer up --workspace-folder /home/roger/src/thoughts
   devcontainer exec --workspace-folder /home/roger/src/thoughts make pdf
   ```
@@ -31,7 +35,7 @@ make pdf           # Generate PDFs for all essays (requires devcontainer with pa
 Essays live in `content/writing/<slug>/index.md`. To publish:
 1. Create a feature branch: `git checkout -b feat/<slug>`
 2. Create the essay file with frontmatter (see below)
-3. Run `make pdf` via the devcontainer CLI (see above)
+3. Run `mise run pdf` (see above)
 4. Commit both the markdown and generated PDF
 5. Push and open a PR against `main` — CI build check must pass before merging
 6. To preview: open a Codespace from the PR on GitHub.com → hugo server auto-starts →
@@ -91,4 +95,4 @@ ShowToc: false
 
 ## PDF generation
 
-The `make pdf` target strips the YAML frontmatter (everything up to the second `---`) and pipes the markdown body through pandoc with xelatex. Requires the devcontainer environment (pandoc + texlive-xetex + DejaVu fonts).
+The `make pdf` target strips the YAML frontmatter and pipes the markdown body through pandoc with xelatex. `mise install` provides pandoc and TinyTeX locally; the devcontainer also installs pandoc and texlive-xetex.

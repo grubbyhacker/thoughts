@@ -7,22 +7,22 @@ Live at: https://fleig.us
 ## Local development
 
 ```bash
-# Install pinned local tools (Hugo extended)
+# Install pinned local tools (Hugo, pandoc, TinyTeX, devcontainer CLI)
 mise install
 
-# Serve locally (requires Hugo extended)
+# Serve locally
 mise run serve
 
-# Build and validate generated article Markdown alternates
+# Build and validate generated article assets
 mise run validate
 
-# Generate PDFs (requires devcontainer with pandoc/texlive)
-make pdf
+# Generate PDFs
+mise run pdf
 ```
 
 ## Publishing a new essay
 
 1. Create `content/writing/<slug>/index.md`
-2. Run `make pdf` inside the devcontainer
+2. Run `mise run pdf`
 3. Commit markdown + generated PDF
 4. Push to main — GitHub Actions deploys automatically

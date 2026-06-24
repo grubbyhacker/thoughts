@@ -1,5 +1,9 @@
 [tools]
 hugo = "0.163.3"
+node = "24.16.0"
+pandoc = "3.10"
+tinytex = "2026.06"
+"npm:@devcontainers/cli" = "0.87.0"
 
 [tasks.serve]
 description = "Run the Hugo development server"
@@ -9,11 +13,10 @@ run = "hugo server"
 description = "Build the Hugo site"
 run = "hugo --minify --noBuildLock"
 
+[tasks.pdf]
+description = "Generate PDFs for all essays"
+run = "make pdf"
+
 [tasks.validate]
-description = "Build the site and verify article Markdown alternates"
-run = [
-  "hugo --minify --noBuildLock",
-  "test -f public/writing/autotrack/index.md",
-  "cmp content/writing/autotrack/index.md public/writing/autotrack/index.md",
-  "grep -Fq '<link rel=alternate type=text/markdown href=/writing/autotrack/index.md>' public/writing/autotrack/index.html",
-]
+description = "Build the site and verify article generated assets"
+run = "scripts/validate-site.sh"
