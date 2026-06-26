@@ -98,3 +98,5 @@ ShowToc: false
 ## PDF generation
 
 The `make pdf` target runs `scripts/generate-pdfs.sh`, which uses article frontmatter as the source of truth for the PDF title block and pipes a temporary Pandoc document through xelatex. Do not duplicate title, subtitle, date, or author in the Markdown body for PDF output. Generated PDFs are written to `.generated/static/writing/`, mounted into Hugo's static output, and must not be committed or placed under source directories. `mise install` provides pandoc and TinyTeX locally; CI/deploy and the devcontainer install pandoc and texlive-xetex.
+
+CI and deploy use the prebuilt `ghcr.io/grubbyhacker/thoughts-build:ci` container image with the pinned Hugo/Pandoc versions, XeLaTeX, and PDF fonts. Workflows build the image locally as a fallback when the image is missing or the toolchain definition changes. Update `.github/images/thoughts-build/Dockerfile` and run the "Build CI Toolchain" workflow when the CI PDF/Hugo toolchain needs to change.

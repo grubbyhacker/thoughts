@@ -20,6 +20,12 @@ mise run validate
 mise run pdf
 ```
 
+CI and deploy use the prebuilt `ghcr.io/grubbyhacker/thoughts-build:ci`
+toolchain image, which contains the pinned Hugo/Pandoc versions, XeLaTeX,
+and PDF fonts.
+If the image is missing or the toolchain definition changes, workflows build it
+locally as a fallback.
+
 ## Publishing a new essay
 
 1. Create `content/writing/<slug>/index.md`
