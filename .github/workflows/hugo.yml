@@ -27,22 +27,11 @@ jobs:
           submodules: true
           fetch-depth: 0
 
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v3
-        with:
-          hugo-version: 0.163.3
-          extended: true
+      - name: Setup mise
+        uses: jdx/mise-action@v3
 
-      - name: Install PDF dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-xetex texlive-fonts-recommended texlive-fonts-extra fonts-dejavu
-
-      - name: Generate PDFs
-        run: make pdf
-
-      - name: Build
-        run: hugo --minify
+      - name: Validate PDF assets
+        run: mise run validate:pdf
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

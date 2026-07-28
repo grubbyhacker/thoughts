@@ -9,7 +9,8 @@ Live at https://fleig.us. Theme: PaperMod. Deployed via GitHub Actions to GitHub
 mise install       # Install pinned local tools, including Hugo, pandoc, TinyTeX, and devcontainer CLI
 mise run serve     # Hugo dev server
 mise run build     # Build the site
-mise run validate  # Build and verify generated article assets
+mise run validate  # Fast HTML and Markdown validation (no PDF toolchain)
+mise run validate:pdf  # Generate PDFs and validate PDF assets
 mise run pdf       # Generate PDFs for all essays
 ```
 

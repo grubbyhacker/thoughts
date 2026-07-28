@@ -1,7 +1,26 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-make pdf
+pdf_validation=false
+
+case "${1:-}" in
+  "") ;;
+  --pdf) pdf_validation=true ;;
+  *)
+    echo "Usage: $0 [--pdf]" >&2
+    exit 2
+    ;;
+esac
+
+if [[ ! -f themes/PaperMod/theme.toml ]]; then
+  echo "PaperMod theme submodule is not initialized; run: git submodule update --init --recursive" >&2
+  exit 1
+fi
+
+if "$pdf_validation"; then
+  make pdf
+fi
+
 hugo --minify --noBuildLock
 
 for article in content/writing/*/index.md; do
@@ -25,7 +44,7 @@ for article in content/writing/*/index.md; do
     ' "$article"
   )"
 
-  if [[ -n "$pdf" ]]; then
+  if "$pdf_validation" && [[ -n "$pdf" ]]; then
     test -f ".generated/static/writing/$slug/$pdf"
     test -f "$public_dir/$pdf"
     grep -Fq "href=/writing/$slug/$pdf" "$public_dir/index.html"

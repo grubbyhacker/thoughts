@@ -18,5 +18,9 @@ description = "Generate PDFs for all essays"
 run = "make pdf"
 
 [tasks.validate]
-description = "Build the site and verify article generated assets"
+description = "Build the site and verify HTML and Markdown article assets"
 run = "scripts/validate-site.sh"
+
+[tasks."validate:pdf"]
+description = "Generate PDFs and verify all article assets"
+run = "scripts/validate-site.sh --pdf"
