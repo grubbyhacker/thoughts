@@ -4,6 +4,7 @@ node = "24.16.0"
 pandoc = "3.10"
 tinytex = "2026.06"
 "npm:@devcontainers/cli" = "0.87.0"
+oxipng = "9.1.5"
 
 [tasks.serve]
 description = "Run the Hugo development server"
@@ -18,5 +19,13 @@ description = "Generate PDFs for all essays"
 run = "make pdf"
 
 [tasks.validate]
-description = "Build the site and verify article generated assets"
+description = "Build the site and verify HTML and Markdown article assets"
 run = "scripts/validate-site.sh"
+
+[tasks."validate:pdf"]
+description = "Generate PDFs and verify all article assets"
+run = "scripts/validate-site.sh --pdf"
+
+[tasks.optimize-images]
+description = "Losslessly optimize PNG images under content/"
+run = "scripts/optimize-images.sh"
