@@ -13,10 +13,13 @@ mise install
 # Serve locally
 mise run serve
 
-# Build and validate generated article assets
+# Fast validation: build and verify HTML and Markdown article assets
 mise run validate
 
-# Generate PDFs
+# Generate PDFs and validate PDF assets
+mise run validate:pdf
+
+# Generate PDFs without validation
 mise run pdf
 ```
 
