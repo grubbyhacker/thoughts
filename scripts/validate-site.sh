@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# A normal clone leaves the PaperMod gitlink as an empty directory. Hugo accepts
+# that directory as a theme and can otherwise produce empty HTML without error.
+git submodule update --init --recursive
+
 make pdf
 hugo --minify --noBuildLock
 
