@@ -1,0 +1,31 @@
+name: Publish agent image
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .gitmodules
+      - mise.toml
+      - package-lock.json
+      - pnpm-lock.yaml
+      - yarn.lock
+      - bun.lock
+      - bun.lockb
+      - uv.lock
+      - poetry.lock
+      - Pipfile.lock
+      - go.sum
+      - Cargo.lock
+      - Gemfile.lock
+      - requirements*.txt
+      - themes/PaperMod
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    uses: grubbyhacker/vps-ops/.github/workflows/publish-agent-image.yml@v1
