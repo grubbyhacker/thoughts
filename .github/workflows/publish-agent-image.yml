@@ -28,4 +28,4 @@ permissions:
 
 jobs:
   publish:
-    uses: grubbyhacker/agent-workflows/.github/workflows/publish-agent-image.yml@3ce44cdc638f443562cd88121ee28e57e6294b94
+    uses: grubbyhacker/agent-workflows/.github/workflows/publish-agent-image.yml@fb9983944306f5c929d8b9aec28fb5da69278445
