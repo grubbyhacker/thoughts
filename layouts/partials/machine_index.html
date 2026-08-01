@@ -16,7 +16,7 @@ Preferred for agents: [structured markdown resume](https://github.com/grubbyhack
 - [Markdown resume](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.md)
 - [Structured markdown resume (preferred for agents)](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.structured.md)
 
-## Long-form
+## Long-form Essays
 
 {{- range site.Data.anthology.longform }}
 - [{{ .title }}]({{ .url }}) — {{ .summary }}
@@ -24,7 +24,7 @@ Preferred for agents: [structured markdown resume](https://github.com/grubbyhack
 {{- end }}
 
 {{ with site.Data.anthology.substack }}
-## Essays (Substack)
+## Shorter Essays (Substack)
 
 {{- range . }}
 - [{{ .title }}]({{ .url }}) — {{ .summary }}

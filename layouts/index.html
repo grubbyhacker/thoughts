@@ -50,7 +50,7 @@ and what you cannot tell from these documents.</pre>
 
   {{- with site.Data.anthology.longform }}
   <section class="anthology-section" aria-labelledby="longform-heading">
-    <h2 id="longform-heading">Long-form</h2>
+    <h2 id="longform-heading">Long-form Essays</h2>
     <ul class="anthology-list">
       {{- range $index, $essay := . }}
       <li class="anthology-item">
@@ -75,7 +75,7 @@ and what you cannot tell from these documents.</pre>
   {{- $series := site.Data.anthology.substack_series }}
   {{- $seriesRendered := false }}
   <section class="anthology-section" aria-labelledby="substack-heading">
-    <h2 id="substack-heading">Essays (Substack)</h2>
+    <h2 id="substack-heading">Shorter Essays (Substack)</h2>
     <ul class="anthology-list">
       {{- range $index, $essay := . }}
       {{- if and $series (not $seriesRendered) (in $series.slugs $essay.slug) }}
