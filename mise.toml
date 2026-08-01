@@ -5,6 +5,7 @@ pandoc = "3.10"
 tinytex = "2026.06"
 "npm:@devcontainers/cli" = "0.87.0"
 oxipng = "9.1.5"
+imagemagick = "7.1.2_27"
 
 [tasks.serve]
 description = "Run the Hugo development server"

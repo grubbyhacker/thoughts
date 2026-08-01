@@ -1,0 +1,91 @@
+substack:
+  - title: "Infrastructure as Code Is an Agent Interface"
+    slug: infrastructure-as-code-is-an-agent
+    url: https://rogerfleig.substack.com/p/infrastructure-as-code-is-an-agent
+    markdown: /md/infrastructure-as-code-is-an-agent.md
+    thumb: /thumbs/infrastructure-as-code-is-an-agent.webp
+    date: 2026-07-15
+    wordcount: 2421
+    summary: >-
+      Make infrastructure legible to agents, so changes arrive as testable plans instead of brittle remembered clicks.
+  - title: "The Work That Was Never Mine"
+    slug: the-work-that-was-never-mine
+    url: https://rogerfleig.substack.com/p/the-work-that-was-never-mine
+    markdown: /md/the-work-that-was-never-mine.md
+    thumb: /thumbs/the-work-that-was-never-mine.webp
+    date: 2026-06-26
+    wordcount: 6177
+    summary: >-
+      Turn one prompt into durable parallel work, so your agent process survives context limits and coordination load.
+  - title: "Stop Calling Coding Agents Eager Interns"
+    slug: stop-calling-coding-agents-eager
+    url: https://rogerfleig.substack.com/p/stop-calling-coding-agents-eager
+    markdown: /md/stop-calling-coding-agents-eager.md
+    thumb: /thumbs/stop-calling-coding-agents-eager.webp
+    date: 2026-04-28
+    wordcount: 1245
+    summary: >-
+      Give cautious agents a clear lane, so judgment turns into completed work instead of timid incrementalism.
+  - title: "The Case for Architectural Linting"
+    slug: the-case-for-architectural-linting
+    url: https://rogerfleig.substack.com/p/the-case-for-architectural-linting
+    markdown: /md/the-case-for-architectural-linting.md
+    thumb: /thumbs/the-case-for-architectural-linting.webp
+    date: 2026-04-14
+    wordcount: 1894
+    summary: >-
+      Encode architectural judgment as executable checks, so agents meet firm boundaries before review becomes the bottleneck.
+  - title: "The Pipe Was Always Narrow"
+    slug: the-pipe-was-always-narrow
+    url: https://rogerfleig.substack.com/p/the-pipe-was-always-narrow
+    markdown: /md/the-pipe-was-always-narrow.md
+    thumb: /thumbs/the-pipe-was-always-narrow.webp
+    date: 2026-04-03
+    wordcount: 1147
+    summary: >-
+      See why verified changes still overwhelm teams, so you can design around the human bottleneck.
+  - title: "Wayfinding, Not Roadmaps"
+    slug: wayfinding-not-roadmaps
+    url: https://rogerfleig.substack.com/p/wayfinding-not-roadmaps
+    markdown: /md/wayfinding-not-roadmaps.md
+    thumb: /thumbs/wayfinding-not-roadmaps.webp
+    date: 2026-03-27
+    wordcount: 1148
+    summary: >-
+      Run small experiments in uncertain terrain, so your investment follows evidence instead of speculative roadmaps.
+  - title: "The Parallelism Thesis"
+    slug: the-parallelism-thesis
+    url: https://rogerfleig.substack.com/p/the-parallelism-thesis
+    markdown: /md/the-parallelism-thesis.md
+    thumb: /thumbs/the-parallelism-thesis.webp
+    date: 2026-03-26
+    wordcount: 1250
+    summary: >-
+      Build for concurrent agent work, so throughput grows beyond one developer's attention and one execution thread.
+  - title: "The $250,000 Vanity Metric"
+    slug: the-250000-vanity-metric
+    url: https://rogerfleig.substack.com/p/the-250000-vanity-metric
+    markdown: /md/the-250000-vanity-metric.md
+    thumb: /thumbs/the-250000-vanity-metric.webp
+    date: 2026-03-25
+    wordcount: 1204
+    summary: >-
+      Measure completed outcomes rather than token burn, so your incentives reward useful work instead of activity.
+  - title: "The Narrow Pipe (short version)"
+    slug: the-narrow-pipe
+    url: https://rogerfleig.substack.com/p/the-narrow-pipe
+    markdown: /md/the-narrow-pipe.md
+    thumb: /thumbs/the-narrow-pipe.webp
+    date: 2026-03-25
+    wordcount: 761
+    summary: >-
+      Understand where agent speed meets human limits, then read the paper that shows how to widen the pipe.
+
+substack_series:
+  title: "The Narrow Pipe Breakdown"
+  slugs:
+    - the-narrow-pipe
+    - the-250000-vanity-metric
+    - the-parallelism-thesis
+    - wayfinding-not-roadmaps
+    - the-pipe-was-always-narrow
