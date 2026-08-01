@@ -37,8 +37,8 @@ cmp public/index.md public/llms.txt
 resume_artifacts=(
   'resume.pdf'
   'resume.docx'
-  'resume.md'
-  'resume.structured.md'
+  'resume.txt'
+  'resume.structured.txt'
 )
 
 for artifact in "${resume_artifacts[@]}"; do
