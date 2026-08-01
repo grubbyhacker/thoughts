@@ -1,1 +1,25 @@
 {{- partial "social_icons.html" -}}
+{{- if .IsHome }}
+<script>
+(() => {
+  const details = document.querySelector(".ai-prompt");
+  const prompt = details?.querySelector("[data-ai-prompt]");
+  if (!prompt || !navigator.clipboard) return;
+  const clipboard = `{{ partial "icons/clipboard.html" . }}`;
+  const check = `{{ partial "icons/check.html" . }}`;
+  const button = document.createElement("button");
+  button.className = "ai-prompt-copy";
+  button.type = "button";
+  button.innerHTML = `${clipboard}<span>Copy prompt</span>`;
+  button.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(prompt.textContent.trim());
+      button.innerHTML = `${check}<span>Copied</span>`;
+      setTimeout(() => { button.innerHTML = `${clipboard}<span>Copy prompt</span>`; }, 2000);
+    } catch (_) {}
+  });
+  details.after(button);
+  details.open = false;
+})();
+</script>
+{{- end }}

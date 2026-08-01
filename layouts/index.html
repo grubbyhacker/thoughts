@@ -9,6 +9,17 @@
     {{- with .Params.availability }}
     <p>{{ . }}</p>
     {{- end }}
+    <details class="ai-prompt" open>
+      <summary>Reading with an AI? Copy a prompt that points it at everything here.</summary>
+      <pre data-ai-prompt>Fetch https://fleig.us/index.md. It is a machine-readable index of Roger
+Fleig's resume and essays, with a direct markdown URL for each. Start with
+the structured markdown resume — it is a lossless, field-labeled projection
+built for agents. Then read whichever essays bear on my question.
+
+Answer whatever I ask below. If I paste a job description, assess fit
+against it specifically: where the evidence is strong, where it is thin,
+and what you cannot tell from these documents.</pre>
+    </details>
   </div>
 
   <section class="anthology-section" aria-labelledby="resume-heading">

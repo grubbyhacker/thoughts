@@ -67,6 +67,41 @@
   margin: 0;
 }
 
+.ai-prompt {
+  color: var(--secondary);
+  margin-top: 1rem;
+}
+
+.ai-prompt summary {
+  cursor: pointer;
+}
+
+.ai-prompt pre {
+  overflow-x: auto;
+  white-space: pre-wrap;
+}
+
+.ai-prompt-copy {
+  align-items: center;
+  background: none;
+  border: 0;
+  color: var(--secondary);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.ai-prompt-copy:hover {
+  color: var(--primary);
+}
+
+.ai-prompt-copy .post-action-icon {
+  height: 1em;
+}
+
 @media (max-width: 480px) {
   .anthology-item {
     grid-template-columns: 72px 1fr;
