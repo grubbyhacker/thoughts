@@ -47,6 +47,29 @@ while IFS= read -r markdown; do
   grep -Fq "$markdown" public/index.md
 done < <(sed -nE 's/^[[:space:]]*markdown:[[:space:]]*//p' data/anthology.yaml)
 
+while IFS= read -r thumb; do
+  [[ -n "$thumb" ]] || continue
+  test -f "public$thumb"
+done < <(sed -nE 's/^[[:space:]]*thumb:[[:space:]]*//p' data/anthology.yaml)
+
+for thumb_file in static/thumbs/*.webp; do
+  dimensions="$(magick identify -format '%wx%h' "$thumb_file")"
+  [[ "$dimensions" == "192x128" ]] || {
+    echo "$thumb_file is ${dimensions}, expected 192x128" >&2
+    exit 1
+  }
+done
+
+provenance_fields=(title author date canonical source license)
+for md_file in static/md/*.md; do
+  for field in "${provenance_fields[@]}"; do
+    grep -qE "^${field}:" "$md_file" || {
+      echo "$md_file is missing the '$field' provenance front-matter field" >&2
+      exit 1
+    }
+  done
+done
+
 # Font Awesome attribution comments remain in the HTML, but the rendered site
 # must not load assets from a third-party origin.
 if rg -uuu -q --glob '*.html' '<(link|script|img)[^>]+(fontawesome\.com|cdnjs|fonts\.googleapis\.com|substackcdn\.com)' public; then
