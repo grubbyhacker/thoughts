@@ -20,7 +20,7 @@ Preferred for agents: [structured markdown resume](https://fleig.us/resume/resum
 
 {{- range site.Data.anthology.longform }}
 - [{{ .title }}]({{ .url }}) — {{ .summary }}
-  - Markdown: {{ replace .markdown ".md" ".txt" }}
+  - Plain-text URL: {{ replace .markdown ".md" ".txt" }}
 {{- end }}
 
 {{ with site.Data.anthology.substack }}
@@ -28,6 +28,6 @@ Preferred for agents: [structured markdown resume](https://fleig.us/resume/resum
 
 {{- range . }}
 - [{{ .title }}]({{ .url }}) — {{ .summary }}
-  - Markdown: {{ replace .markdown ".md" ".txt" }}
+  - Plain-text URL: {{ replace .markdown ".md" ".txt" }}
 {{- end }}
 {{ end }}

@@ -43,6 +43,8 @@ jobs:
       - name: Verify self-hosted resume markdown published
         run: |
           set -euo pipefail
+          test -s public/resume/resume.md
+          test -s public/resume/resume.structured.md
           test -s public/resume/resume.txt
           test -s public/resume/resume.structured.txt
 
