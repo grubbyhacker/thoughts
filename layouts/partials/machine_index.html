@@ -1,0 +1,33 @@
+{{- $page := . -}}
+# {{ $page.Title }}
+
+{{ $page.RawContent | strings.TrimSpace }}
+
+{{ with $page.Params.availability }}
+{{ . }}
+{{ end }}
+
+## Resume
+
+Preferred for agents: [structured markdown resume](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.structured.md)
+
+- [PDF resume](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.pdf)
+- [DOCX resume](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.docx)
+- [Markdown resume](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.md)
+- [Structured markdown resume (preferred for agents)](https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.structured.md)
+
+## Long-form Essays
+
+{{- range site.Data.anthology.longform }}
+- [{{ .title }}]({{ .url }}) — {{ .summary }}
+  - Markdown: {{ .markdown }}
+{{- end }}
+
+{{ with site.Data.anthology.substack }}
+## Shorter Essays (Substack)
+
+{{- range . }}
+- [{{ .title }}]({{ .url }}) — {{ .summary }}
+  - Markdown: {{ .markdown }}
+{{- end }}
+{{ end }}
