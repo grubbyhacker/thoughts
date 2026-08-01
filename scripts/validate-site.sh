@@ -21,6 +21,10 @@ if "$pdf_validation"; then
   make pdf
 fi
 
+# Regenerate rather than trust committed .txt twins - keeps them from ever
+# silently drifting from the static/md/*.md they mirror.
+scripts/sync-md-txt.sh
+
 hugo --minify --noBuildLock
 
 test -f public/about/index.html
