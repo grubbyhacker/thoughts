@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [resume-published]
 
 permissions:
   contents: read
@@ -30,8 +32,19 @@ jobs:
       - name: Setup mise
         uses: jdx/mise-action@v3
 
+      - name: Fetch resume markdown for self-hosting
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/fetch-resume.sh
+
       - name: Validate PDF assets
         run: mise run validate:pdf
+
+      - name: Verify self-hosted resume markdown published
+        run: |
+          set -euo pipefail
+          test -s public/resume/resume.txt
+          test -s public/resume/resume.structured.txt
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4

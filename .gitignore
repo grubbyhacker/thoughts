@@ -2,3 +2,4 @@ public/
 .hugo_build.lock
 .generated/
 /static/md/*.txt
+/static/resume/
