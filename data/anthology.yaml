@@ -1,0 +1,25 @@
+longform:
+  - title: "If You Give an Agent a Token..."
+    url: /writing/if-you-give-an-agent-a-token/
+    markdown: /writing/if-you-give-an-agent-a-token/index.md
+    thumb: /thumbs/if-you-give-an-agent-a-token.webp
+    date: 2026-06-23
+    reading_time: "44 min"
+    summary: >-
+      A field report from building brokered identities, private memory systems, and a coding-agent fleet.
+  - title: "Agents Building Agents"
+    url: /writing/autotrack/
+    markdown: /writing/autotrack/index.md
+    thumb: /thumbs/autotrack.webp
+    date: 2026-04-27
+    reading_time: "40 min"
+    summary: >-
+      A field report from building Autotrack, a Roblox racing simulator where coding agents built the system and simulation agents learned to modify the track.
+  - title: "The Narrow Pipe"
+    url: /writing/narrowpipe/
+    markdown: /writing/narrowpipe/index.md
+    thumb: /thumbs/the-narrow-pipe.webp
+    date: 2026-03-24
+    reading_time: "51 min"
+    summary: >-
+      Code production cost is falling rapidly due to AI agents, but the downstream infrastructure was designed for human-speed throughput.

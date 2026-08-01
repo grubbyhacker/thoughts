@@ -1,10 +1,93 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta http-equiv="refresh" content="0; url=/writing/">
-  <link rel="canonical" href="/writing/">
-</head>
-<body>
-  <p>Redirecting to <a href="/writing/">/writing/</a>...</p>
-</body>
-</html>
+{{- define "main" }}
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+  <div class="post-content">
+    {{ .Content }}
+    {{- with .Params.availability }}
+    <p>{{ . }}</p>
+    {{- end }}
+  </div>
+
+  <section class="anthology-section" aria-labelledby="resume-heading">
+    <h2 id="resume-heading">Resume</h2>
+    <div class="post-actions">
+      <a class="post-action" href="https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.pdf">
+        {{- partial "pdf_icon.html" -}}
+        <span>PDF</span>
+      </a>
+      <a class="post-action" href="https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.docx">
+        {{- partial "icons/file-word.html" -}}
+        <span>DOCX</span>
+      </a>
+      <a class="post-action" href="https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.md">
+        {{- partial "markdown_icon.html" -}}
+        <span>Markdown</span>
+      </a>
+      <a class="post-action" href="https://github.com/grubbyhacker/resume-builder/releases/latest/download/resume.structured.md">
+        {{- partial "icons/file-code.html" -}}
+        <span>Structured Markdown (for agents)</span>
+      </a>
+      <a class="post-action" href="https://github.com/grubbyhacker/resume-builder">
+        {{- partial "icons/github.html" -}}
+        <span>How it is built</span>
+      </a>
+    </div>
+  </section>
+
+  {{- with site.Data.anthology.longform }}
+  <section class="anthology-section" aria-labelledby="longform-heading">
+    <h2 id="longform-heading">Long-form</h2>
+    <ul class="anthology-list">
+      {{- range $index, $essay := . }}
+      <li class="anthology-item">
+        <img src="{{ $essay.thumb }}" alt="" width="96" height="64"{{ if ge $index 2 }} loading="lazy"{{ end }}>
+        <div>
+          <a class="anthology-title" href="{{ $essay.url }}">{{ $essay.title }}</a>
+          <span class="anthology-reading-time">{{ $essay.reading_time }}</span>
+          <p class="anthology-summary">{{ $essay.summary }}</p>
+          <p class="anthology-links">
+            <a href="{{ $essay.url }}">read</a>
+            <span class="anthology-links-separator" aria-hidden="true">·</span>
+            <a href="{{ $essay.markdown }}">markdown</a>
+          </p>
+        </div>
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+
+  {{- with site.Data.anthology.substack }}
+  {{- $series := site.Data.anthology.substack_series }}
+  {{- $seriesRendered := false }}
+  <section class="anthology-section" aria-labelledby="substack-heading">
+    <h2 id="substack-heading">Essays (Substack)</h2>
+    <ul class="anthology-list">
+      {{- range $index, $essay := . }}
+      {{- if and $series (not $seriesRendered) (in $series.slugs $essay.slug) }}
+      <li class="anthology-series-title"><h3>{{ $series.title }}</h3></li>
+      {{- $seriesRendered = true }}
+      {{- end }}
+      <li class="anthology-item">
+        <img src="{{ $essay.thumb }}" alt="" width="96" height="64"{{ if ge $index 2 }} loading="lazy"{{ end }}>
+        <div>
+          <a class="anthology-title" href="{{ $essay.url }}">{{ $essay.title }}</a>
+          <span class="anthology-reading-time">{{ $essay.date }}</span>
+          <p class="anthology-summary">{{ $essay.summary }}</p>
+          <p class="anthology-links">
+            <a href="{{ $essay.url }}">read</a>
+            <span class="anthology-links-separator" aria-hidden="true">·</span>
+            <a href="{{ $essay.markdown }}">markdown</a>
+          </p>
+        </div>
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+</article>
+
+{{- end }}
