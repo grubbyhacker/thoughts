@@ -72,12 +72,12 @@ done
 
 # Font Awesome attribution comments remain in the HTML, but the rendered site
 # must not load assets from a third-party origin.
-if rg -uuu -q --glob '*.html' '<(link|script|img)[^>]+(fontawesome\.com|cdnjs|fonts\.googleapis\.com|substackcdn\.com)' public; then
+if grep -rIlE --include='*.html' '<(link|script|img)[^>]+(fontawesome\.com|cdnjs|fonts\.googleapis\.com|substackcdn\.com)' public >/dev/null; then
   echo "Built HTML loads a third-party asset" >&2
   exit 1
 fi
 
-post_action_icons="$(rg -uuu -o --no-filename --glob '*.html' '<svg[^>]*post-action-icon[^>]*>' public || true)"
+post_action_icons="$(grep -rhoE --include='*.html' '<svg[^>]*post-action-icon[^>]*>' public || true)"
 if [[ -z "$post_action_icons" ]]; then
   echo "No inlined action icons found in built HTML" >&2
   exit 1
