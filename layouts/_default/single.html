@@ -27,9 +27,24 @@
       {{- partial "post_canonical.html" . -}}
     </div>
     {{- end }}
-    {{- with .Params.pdf }}
-    <div class="post-pdf-download">
-      <a href="{{ $.RelPermalink }}{{ . }}">Download PDF</a>
+    {{- $markdownOutput := false }}
+    {{- if and .IsPage (eq .Section "writing") }}
+    {{- $markdownOutput = .OutputFormats.Get "markdown" }}
+    {{- end }}
+    {{- if or $markdownOutput .Params.pdf }}
+    <div class="post-actions">
+      {{- with $markdownOutput }}
+      <a class="post-action" href="{{ .RelPermalink }}" title="Agent-readable Markdown">
+        {{- partial "markdown_icon.html" -}}
+        <span>Agent-readable Markdown</span>
+      </a>
+      {{- end }}
+      {{- with .Params.pdf }}
+      <a class="post-action post-action--pdf" href="{{ $.RelPermalink }}{{ . }}">
+        {{- partial "pdf_icon.html" -}}
+        <span>Download PDF</span>
+      </a>
+      {{- end }}
     </div>
     {{- end }}
   </header>
@@ -48,16 +63,6 @@
   {{- end }}
 
   <footer class="post-footer">
-    {{- if and .IsPage (eq .Section "writing") }}
-    {{- with .OutputFormats.Get "markdown" }}
-    <div class="post-markdown-link">
-      <a href="{{ .RelPermalink }}" title="Agent-readable Markdown">
-        {{- partial "markdown_icon.html" -}}
-        <span>Agent-readable Markdown</span>
-      </a>
-    </div>
-    {{- end }}
-    {{- end }}
     {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
     <ul class="post-tags">
       {{- range ($.GetTerms $tags) }}
