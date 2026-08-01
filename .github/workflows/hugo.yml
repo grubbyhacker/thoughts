@@ -33,6 +33,8 @@ jobs:
         uses: jdx/mise-action@v3
 
       - name: Fetch resume markdown for self-hosting
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: scripts/fetch-resume.sh
 
       - name: Validate PDF assets
