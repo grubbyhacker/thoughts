@@ -1,9 +1,11 @@
-.post-markdown-link {
+.post-actions {
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 1rem;
 }
 
-.post-markdown-link a {
+.post-action {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -17,13 +19,20 @@
   text-decoration: none;
 }
 
-.post-markdown-link a:hover {
+.post-action:hover {
   background: var(--border);
   color: var(--primary);
 }
 
-.post-markdown-link svg {
-  width: 28px;
-  height: 18px;
+.post-action-icon {
+  width: auto;
+  height: 1.125rem;
   flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .post-actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
