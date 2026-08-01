@@ -21,6 +21,10 @@ if "$pdf_validation"; then
   make pdf
 fi
 
+# Regenerate rather than trust committed .txt twins - keeps them from ever
+# silently drifting from the static/md/*.md they mirror.
+scripts/sync-md-txt.sh
+
 hugo --minify --noBuildLock
 
 test -f public/about/index.html
@@ -44,7 +48,14 @@ done
 while IFS= read -r markdown; do
   [[ -n "$markdown" ]] || continue
   test -f "public$markdown"
-  grep -Fq "$markdown" public/index.md
+
+  # The machine-readable index links the .txt twin, not the .md, since
+  # GitHub Pages serves .md as text/markdown and some agent fetch tools
+  # reject that content type outright.
+  txt="${markdown%.md}.txt"
+  test -f "public$txt"
+  cmp "public$markdown" "public$txt"
+  grep -Fq "$txt" public/index.md
 done < <(sed -nE 's/^[[:space:]]*markdown:[[:space:]]*//p' data/anthology.yaml)
 
 while IFS= read -r thumb; do
