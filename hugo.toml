@@ -19,12 +19,17 @@ theme = "PaperMod"
     baseName = "llms"
     isPlainText = true
     notAlternative = true
+  [outputFormats.plain]
+    mediaType = "text/plain"
+    baseName = "index"
+    isPlainText = true
+    notAlternative = true
 
 [outputs]
   home = ["HTML", "RSS", "markdown", "llms"]
 
 [[cascade]]
-  outputs = ["html", "markdown"]
+  outputs = ["html", "markdown", "plain"]
   [cascade.target]
     path = "/writing/**"
 

@@ -2,7 +2,8 @@
 
 # Fetch published Substack artifacts and make self-hosted thumbnails.
 # Markdown cleanup remains intentionally manual: inspect static/md/ after this
-# script runs and remove Substack UI residue before committing.
+# script runs and remove Substack UI residue before committing. Re-run
+# scripts/sync-md-txt.sh after that cleanup to refresh the .txt twins.
 set -euo pipefail
 
 publication='https://rogerfleig.substack.com'
@@ -108,3 +109,5 @@ cp "$thumb_dir/the-narrow-pipe.webp" "$thumb_dir/narrowpipe.webp"
 cp "$thumb_dir/the-work-that-was-never-mine.webp" "$thumb_dir/if-you-give-an-agent-a-token.webp"
 
 magick identify -format '%f %wx%h\n' "$thumb_dir"/*.webp
+
+./scripts/sync-md-txt.sh
